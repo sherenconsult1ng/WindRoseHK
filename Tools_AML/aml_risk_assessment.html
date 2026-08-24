@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AML/CFT Client Risk Assessment Form</title>
+<style>
+  :root {
+    --navy: #0C2340;
+    --navy-mid: #1A3A5C;
+    --gold: #B8860B;
+    --gold-light: #F5E6B0;
+    --red-high: #A32D2D;
+    --red-bg: #FCEBEB;
+    --amber-mid: #BA7517;
+    --amber-bg: #FAEEDA;
+    --green-mid: #3B6D11;
+    --green-bg: #EAF3DE;
+    --border: #D3D1C7;
+    --bg: #F8F7F4;
+    --card-bg: #FFFFFF;
+    --text: #1A1A1A;
+    --text-muted: #5F5E5A;
+    --radius: 8px;
+    --radius-lg: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    background: var(--bg);
+    color: var(--text);
+    padding: 0;
+  }
+
+  .page-header {
+    background: var(--navy);
+    color: #fff;
+    padding: 28px 40px 24px;
+    border-bottom: 4px solid var(--gold);
+  }
+  .page-header .firm-name {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #B8C8D8;
+    margin-bottom: 6px;
+  }
+  .page-header h1 {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    margin-bottom: 4px;
+  }
+  .page-header .subtitle {
+    font-size: 12px;
+    color: #8CA8C0;
+  }
+  .confidential-tag {
+    display: inline-block;
+    background: var(--gold);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-top: 12px;
+  }
+
+  .form-body {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 24px 60px;
+  }
+
+  .client-info-bar {
+    background: var(--card-bg);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+    margin-bottom: 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .field-group label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .field-group input, .field-group select {
+    width: 100%;
+    padding: 9px 12px;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-family: inherit;
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .field-group input:focus, .field-group select:focus {
+    border-color: var(--navy-mid);
+    background: #fff;
+  }
+
+  .section-card {
+    background: var(--card-bg);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .section-header {
+    background: var(--navy);
+    color: #fff;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .section-header h2 {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+  }
+  .section-score-badge {
+    font-size: 12px;
+    background: rgba(255,255,255,0.15);
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .subsection-label {
+    padding: 10px 20px 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border-bottom: 0.5px solid var(--border);
+    background: #FAFAF8;
+  }
+
+  .question-row {
+    padding: 14px 20px;
+    border-bottom: 0.5px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: start;
+  }
+  .question-row:last-child { border-bottom: none; }
+  .question-text {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .question-note {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    margin-top: 3px;
+    font-style: italic;
+  }
+
+  .radio-group {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+    align-items: center;
+  }
+  .risk-btn {
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    background: transparent;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+    color: var(--text-muted);
+  }
+  .risk-btn:hover { border-color: #888; color: var(--text); }
+  .risk-btn.selected-L { background: var(--green-bg); border-color: var(--green-mid); color: var(--green-mid); }
+  .risk-btn.selected-M { background: var(--amber-bg); border-color: var(--amber-mid); color: var(--amber-mid); }
+  .risk-btn.selected-H { background: var(--red-bg); border-color: var(--red-high); color: var(--red-high); }
+  .risk-btn.selected-NA { background: #F1EFE8; border-color: #B4B2A9; color: #5F5E5A; }
+
+  .geo-row {
+    padding: 14px 20px;
+    border-bottom: 0.5px solid var(--border);
+    display: grid;
+    grid-template-columns: 160px 1fr auto;
+    gap: 12px;
+    align-items: center;
+  }
+  .geo-row:last-child { border-bottom: none; }
+  .geo-label {
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .geo-input {
+    padding: 7px 11px;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 13px;
+    font-family: inherit;
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .geo-input:focus { border-color: var(--navy-mid); background: #fff; }
+  .geo-risk-indicator {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    min-width: 64px;
+    text-align: center;
+  }
+  .geo-risk-L { background: var(--green-bg); color: var(--green-mid); }
+  .geo-risk-M { background: var(--amber-bg); color: var(--amber-mid); }
+  .geo-risk-H { background: var(--red-bg); color: var(--red-high); }
+  .geo-risk-none { background: #F1EFE8; color: #888; }
+  .geo-note {
+    grid-column: 1 / -1;
+    font-size: 11.5px;
+    color: var(--text-muted);
+    font-style: italic;
+    padding-top: 0;
+    margin-top: -8px;
+  }
+
+  .geo-combined-result {
+    padding: 12px 20px;
+    background: #F8F7F4;
+    border-top: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .geo-combined-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    color: var(--text-muted);
+  }
+
+  .score-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .score-card {
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    background: var(--card-bg);
+    text-align: center;
+  }
+  .score-card-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .score-card-value {
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .score-card-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .total-result-card {
+    background: var(--navy);
+    color: #fff;
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .total-result-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #8CA8C0;
+    margin-bottom: 4px;
+  }
+  .total-result-score {
+    font-size: 36px;
+    font-weight: 700;
+  }
+  .risk-level-badge {
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .rl-low { background: var(--green-bg); color: var(--green-mid); }
+  .rl-medium { background: var(--amber-bg); color: var(--amber-mid); }
+  .rl-high { background: var(--red-bg); color: var(--red-high); }
+  .rl-pending { background: rgba(255,255,255,0.1); color: #8CA8C0; }
+
+  .edd-card {
+    background: var(--red-bg);
+    border: 1px solid #F7C1C1;
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    display: none;
+  }
+  .edd-card.visible { display: block; }
+  .edd-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--red-high);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .edd-options { display: flex; gap: 12px; margin-top: 10px; }
+
+  .approval-card {
+    background: var(--card-bg);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .approval-header {
+    background: var(--navy-mid);
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .approval-body { padding: 20px 24px; }
+  .approval-options { display: flex; gap: 12px; margin-bottom: 16px; }
+  .approve-btn, .reject-btn {
+    padding: 9px 28px;
+    border-radius: var(--radius);
+    border: 1.5px solid;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .approve-btn { border-color: var(--green-mid); color: var(--green-mid); background: transparent; }
+  .approve-btn.selected { background: var(--green-bg); }
+  .reject-btn { border-color: var(--red-high); color: var(--red-high); background: transparent; }
+  .reject-btn.selected { background: var(--red-bg); }
+  .notes-area {
+    width: 100%;
+    min-height: 80px;
+    padding: 10px 12px;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 13px;
+    font-family: inherit;
+    resize: vertical;
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+    margin-bottom: 16px;
+  }
+  .notes-area:focus { border-color: var(--navy-mid); background: #fff; }
+
+  .sig-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .sig-block {
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+  }
+  .sig-block.required {
+    border: 1.5px solid var(--red-high);
+    background: var(--red-bg);
+  }
+  .sig-block.required label { color: var(--red-high); }
+  .sig-block label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .sig-line {
+    border-bottom: 1px solid var(--border);
+    height: 32px;
+    margin-bottom: 8px;
+  }
+
+  .review-card {
+    background: var(--card-bg);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .review-header {
+    background: #2C2C2A;
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .review-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .review-table th {
+    background: #F8F7F4;
+    padding: 10px 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: left;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .review-table td {
+    padding: 12px 20px;
+    border-bottom: 0.5px solid var(--border);
+    font-size: 13px;
+  }
+  .review-table tr:last-child td { border-bottom: none; }
+  .review-freq {
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .review-active td { background: #EAF3DE; }
+  .review-active .review-freq { color: var(--green-mid); }
+  .review-active-H td { background: var(--red-bg); }
+  .review-active-H .review-freq { color: var(--red-high); }
+  .review-active-M td { background: var(--amber-bg); }
+  .review-active-M .review-freq { color: var(--amber-mid); }
+
+  .periodic-note {
+    padding: 12px 20px;
+    background: #FAEEDA;
+    font-size: 12px;
+    color: #633806;
+    border-top: 0.5px solid #FAC775;
+  }
+
+  .country-lookup-row {
+    padding: 10px 20px 14px;
+    background: #F8F7F4;
+    border-top: 0.5px solid var(--border);
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .country-lookup-row a {
+    color: var(--navy-mid);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .print-btn {
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    padding: 11px 28px;
+    border-radius: var(--radius);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+    transition: background 0.15s;
+  }
+  .print-btn:hover { background: var(--navy-mid); }
+
+  .legend-row {
+    display: flex;
+    gap: 16px;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    align-items: center;
+  }
+  .legend-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+  }
+
+  .high-warning {
+    background: var(--red-bg);
+    border: 1px solid #F09595;
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    font-size: 12.5px;
+    color: var(--red-high);
+    margin-top: 12px;
+    display: none;
+  }
+  .high-warning.visible { display: block; }
+
+  @media print {
+    body { background: #fff; }
+    .print-btn { display: none; }
+    .section-card, .approval-card, .review-card { break-inside: avoid; }
+  }
+
+  .page-footer {
+    background: var(--navy);
+    color: #B8C8D8;
+    padding: 16px 40px;
+    border-top: 4px solid var(--gold);
+    text-align: center;
+    font-size: 10.5px;
+    line-height: 1.6;
+  }
+  .page-footer .footnote {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="firm-name">xyz Asset Management Limited · Compliance Division</div>
+  <h1>AML/CFT Client Risk Assessment Form</h1>
+  <div class="subtitle">Anti-Money Laundering &amp; Counter-Terrorist Financing · Ver. 1 · 2026</div>
+  <div class="confidential-tag">Confidential</div>
+</div>
+
+<div class="form-body">
+
+  <div class="client-info-bar">
+    <div class="field-group">
+      <label>Client Name</label>
+      <input type="text" id="clientName" placeholder="Full legal name of client">
+    </div>
+    <div class="field-group">
+      <label>Account Number / Reference</label>
+      <input type="text" id="accountRef" placeholder="Account or reference number">
+    </div>
+  </div>
+
+  <div class="legend-row">
+    <span style="font-weight:600; color: var(--text);">Risk scoring:</span>
+    <span class="legend-pill" style="background:var(--green-bg); color:var(--green-mid);">L = 2 pts</span>
+    <span class="legend-pill" style="background:var(--amber-bg); color:var(--amber-mid);">M = 5 pts</span>
+    <span class="legend-pill" style="background:var(--red-bg); color:var(--red-high);">H = 7 pts</span>
+    <span class="legend-pill" style="background:#F1EFE8; color:#5F5E5A;">N/A = 0 pts</span>
+  </div>
+
+  <!-- SECTION 1: CUSTOMER RISK -->
+  <div class="section-card">
+    <div class="section-header">
+      <h2>1 · Customer Risk</h2>
+      <span class="section-score-badge" id="badge-customer">Score: —</span>
+    </div>
+
+    <div class="subsection-label">Type of customer</div>
+    <div class="question-row">
+      <div>
+        <div class="question-text">Type of client entity</div>
+        <div class="question-note">L: Individual or entity with &lt;3 ownership layers, Trust or Foundation &nbsp;|&nbsp; M: (not applicable) &nbsp;|&nbsp; H: Multiple ownership layers (3+) across different corporate entity types in different jurisdictions</div>
+      </div>
+      <div class="radio-group" data-section="customer" data-q="typeOfCustomer">
+        <button class="risk-btn" data-val="L" onclick="selectRisk(this,'typeOfCustomer','customer')">L</button>
+        <button class="risk-btn" data-val="H" onclick="selectRisk(this,'typeOfCustomer','customer')">H</button>
+      </div>
+    </div>
+
+    <div class="subsection-label">Background of client</div>
+    <div class="question-row">
+      <div>
+        <div class="question-text">Is your client a Politically Exposed Person (PEP)?</div>
+      </div>
+      <div class="radio-group" data-section="customer" data-q="pep">
+        <button class="risk-btn" data-val="L" onclick="selectRisk(this,'pep','customer')">No (L)</button>
+        <button class="risk-btn" data-val="M" onclick="selectRisk(this,'pep','customer')">Domestic PEP (M)</button>
+        <button class="risk-btn" data-val="H" onclick="selectRisk(this,'pep','customer')">Foreign PEP (H)</button>
+      </div>
+    </div>
+    <div class="question-row">
+      <div>
+        <div class="question-text">Name screening — Sanctions list</div>
+      </div>
+      <div class="radio-group" data-section="customer" data-q="sanctionScreen">
+        <button class="risk-btn" data-val="L" onclick="selectRisk(this,'sanctionScreen','customer')">No match (L)</button>
+        <button class="risk-btn" data-val="M" onclick="selectRisk(this,'sanctionScreen','customer')">Potential match (M)</button>
+        <button class="risk-btn" data-val="H" onclick="selectRisk(this,'sanctionScreen','customer')">Confirmed hit (H)</button>
+      </div>
+    </div>
+    <div class="question-row">
+      <div>
+        <div class="question-text">Name screening — Negative news</div>
+      </div>
+      <div class="radio-group" data-section="customer" data-q="negNewsScreen">
+        <button class="risk-btn" data-val="L" onclick="selectRisk(this,'negNewsScreen','customer')">No match (L)</button>
+        <button class="risk-btn" data-val="M" onclick="selectRisk(this,'negNewsScreen','customer')">Potential match (M)</button>
+        <button class="risk-btn" data-val="H" onclick="selectRisk(this,'negNewsScreen','customer')">Confirmed hit (H)</button>
+      </div>
+    </div>
+
+    <div class="subsection-label">Source of wealth</div>
+    <div class="question-row">
+      <div>
+        <div class="question-text">Source of wealth category</div>
+        <div class="question-note">L: Verified salary or business &nbsp;|&nbsp; M: Investment income; oil &amp; gas sector; payment processor &nbsp;|&nbsp; H: Casino/gambling; precious metals/stones/gems/arts/antiquities; DNFBP (real estate, legal, accounting, audit, tax); TCSP; VASP/digital assets; real estate professionals; arms dealers; money services businesses; bearer share issuers; NPOs/charities; trade finance; unclear source</div>
+      </div>
+      <div class="radio-group" data-section="customer" data-q="sourceWealth">
+        <button class="risk-btn" data-val="L" onclick="selectRisk(this,'sourceWealth','customer')">L</button>
+        <button class="risk-btn" data-val="M" onclick="selectRisk(this,'sourceWealth','customer')">M</button>
+        <button class="risk-btn" data-val="H" onclick="selectRisk(this,'sourceWealth','customer')">H</button>
+      </div>
+    </div>
+
+    <div class="subsection-label">Identity &amp; address verification</div>
+    <div class="question-row">
+      <div>
+        <div class="question-text">Has the client provided acceptable identity verification documents (e.g. government-issued ID for individuals; Certificate of Incorporation for entities)?</div>
+      </div>
+      <div class="radio-group" data-section="customer" data-q="idVerified">
+        <button class="risk-btn" data-val="L" onclick="selectRisk(this,'idVerified','customer')">Yes (L)</button>
+        <button class="risk-btn" data-val="H" onclick="selectRisk(this,'idVerified','customer')">No (H)</button>
+      </div>
+    </div>
+    <div class="question-row">
+      <div>
+        <div class="question-text">If entity: do you have the full list of beneficial owners and directors/controllers?</div>
+      </div>
+      <div class="radio-group" data-section="customer" data-q="boList">
+        <button class="risk-btn" data-val="L" onclick="selectRisk(this,'boList','customer')">Yes (L)</button>
+        <button class="risk-btn" data-val="H" onclick="selectRisk(this,'boList','customer')">No (H)</button>
+        <button class="risk-btn" data-val="NA" onclick="selectRisk(this,'boList','customer')">N/A</button>
+      </div>
+    </div>
+    <div class="question-row">
+      <div>
+        <div class="question-text">Has the client been cooperative throughout the process (timely provision of documents, answered all queries)?</div>
+      </div>
+      <div class="radio-group" data-section="customer" data-q="cooperative">
+        <button class="risk-btn" data-val="L" onclick="selectRisk(this,'cooperative','customer')">Yes (L)</button>
+        <button class="risk-btn" data-val="M" onclick="selectRisk(this,'cooperative','customer')">No (M)</button>
+      </div>
+    </div>
+
+    <div class="subsection-label">Financial profile</div>
+    <div class="question-row">
+      <div>
+        <div class="question-text">Does the stated source of wealth/funds and amount involved align with what you know about the client (e.g. age, occupation, background)?</div>
+      </div>
+      <div class="radio-group" data-section="customer" data-q="sowConsistent">
+        <button class="risk-btn" data-val="L" onclick="selectRisk(this,'sowConsistent','customer')">Yes (L)</button>
+        <button class="risk-btn" data-val="H" onclick="selectRisk(this,'sowConsistent','customer')">No (H)</button>
+      </div>
+    </div>
+    <div class="question-row" style="border-bottom:none;">
+      <div>
+        <div class="question-text">Is the client involved in or running a high-risk or high-cash-turnover business?</div>
+      </div>
+      <div class="radio-group" data-section="customer" data-q="highCashBiz">
+        <button class="risk-btn" data-val="H" onclick="selectRisk(this,'highCashBiz','customer')">Yes (H)</button>
+        <button class="risk-btn" data-val="L" onclick="selectRisk(this,'highCashBiz','customer')">No (L)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: GEOGRAPHICAL RISK -->
+  <div class="section-card">
+    <div class="section-header">
+      <h2>2 · Geographical Risk</h2>
+      <span class="section-score-badge" id="badge-geo">Score: —</span>
+    </div>
+
+    <div class="subsection-label">Country inputs — refer to country risk list below</div>
+    <div class="geo-row">
+      <div class="geo-label">Nationality</div>
+      <input type="text" class="geo-input" id="geo-nationality" placeholder="Country of nationality" oninput="updateGeo()">
+      <div class="geo-risk-indicator geo-risk-none" id="geo-nat-badge">—</div>
+    </div>
+    <div class="geo-row">
+      <div class="geo-label">Country of residence</div>
+      <input type="text" class="geo-input" id="geo-residence" placeholder="Country of residence" oninput="updateGeo()">
+      <div class="geo-risk-indicator geo-risk-none" id="geo-res-badge">—</div>
+    </div>
+    <div class="geo-row" style="border-bottom:none;">
+      <div class="geo-label">Location of business</div>
+      <input type="text" class="geo-input" id="geo-business" placeholder="Country (for non-salary clients)" oninput="updateGeo()">
+      <div class="geo-risk-indicator geo-risk-none" id="geo-biz-badge">—</div>
+      <div class="geo-note">For salary-paid clients, leave blank in "Location of business". If all three inputs are the same and in a low-risk country, Geographical Risk = Low. If any two inputs differ, the riskier level applies. If all three inputs are different, Geographical Risk = High regardless of individual country ratings.</div>
+    </div>
+
+    <div class="geo-combined-result">
+      <span class="geo-combined-label">Geographical risk level</span>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span id="geo-combined-text" style="font-size:12px; color:var(--text-muted);">Enter country details above</span>
+        <div class="geo-risk-indicator geo-risk-none" id="geo-combined-badge" style="font-size:13px; padding: 5px 18px;">—</div>
+      </div>
+    </div>
+
+    <div class="country-lookup-row">
+      Country risk classification per FATF guidelines. Update country data at:
+      <a href="https://www.fatf-gafi.org/en/home.html" target="_blank">www.fatf-gafi.org</a>
+    </div>
+  </div>
+
+  <!-- SECTION 3: DISTRIBUTION/DELIVERY RISK -->
+  <div class="section-card">
+    <div class="section-header">
+      <h2>3 · Distribution / Delivery Risk</h2>
+      <span class="section-score-badge" id="badge-dist">Score: —</span>
+    </div>
+
+    <div class="subsection-label">Distribution channel</div>
+    <div class="question-row">
+      <div>
+        <div class="question-text">Has the client been introduced to you by a third party?</div>
+      </div>
+      <div class="radio-group" data-section="dist" data-q="thirdPartyIntro">
+        <button class="risk-btn" data-val="M" onclick="selectRisk(this,'thirdPartyIntro','dist')">Yes (M)</button>
+        <button class="risk-btn" data-val="L" onclick="selectRisk(this,'thirdPartyIntro','dist')">No (L)</button>
+      </div>
+    </div>
+    <div class="question-row">
+      <div>
+        <div class="question-text">Are instructions from the client channelled through a third party?</div>
+      </div>
+      <div class="radio-group" data-section="dist" data-q="thirdPartyInstr">
+        <button class="risk-btn" data-val="H" onclick="selectRisk(this,'thirdPartyInstr','dist')">Yes (H)</button>
+        <button class="risk-btn" data-val="L" onclick="selectRisk(this,'thirdPartyInstr','dist')">No (L)</button>
+      </div>
+    </div>
+
+    <div class="subsection-label">Face to face contact</div>
+    <div class="question-row">
+      <div>
+        <div class="question-text">Was the account opened via face-to-face contact?</div>
+      </div>
+      <div class="radio-group" data-section="dist" data-q="faceToFace">
+        <button class="risk-btn" data-val="L" onclick="selectRisk(this,'faceToFace','dist')">Yes, face-to-face (L)</button>
+        <button class="risk-btn" data-val="H" onclick="selectRisk(this,'faceToFace','dist')">No, non-face-to-face (H)</button>
+      </div>
+    </div>
+    <div class="question-row" style="border-bottom:none;">
+      <div>
+        <div class="question-text">If non-face-to-face: is there a legitimate reason (e.g. signature witnessed by notary, law firm, accountant)?</div>
+      </div>
+      <div class="radio-group" data-section="dist" data-q="nonF2FReason">
+        <button class="risk-btn" data-val="M" onclick="selectRisk(this,'nonF2FReason','dist')">Yes (M)</button>
+        <button class="risk-btn" data-val="L" onclick="selectRisk(this,'nonF2FReason','dist')">No (L)</button>
+        <button class="risk-btn" data-val="NA" onclick="selectRisk(this,'nonF2FReason','dist')">N/A</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: PRODUCT/SERVICE RISK -->
+  <div class="section-card">
+    <div class="section-header">
+      <h2>4 · Product / Service Risk</h2>
+      <span class="section-score-badge" id="badge-prod">Score: —</span>
+    </div>
+
+    <div class="question-row">
+      <div>
+        <div class="question-text">Do the products/services to be provided to the client inherently offer greater anonymity?</div>
+      </div>
+      <div class="radio-group" data-section="prod" data-q="anonymity">
+        <button class="risk-btn" data-val="H" onclick="selectRisk(this,'anonymity','prod')">Yes (H)</button>
+        <button class="risk-btn" data-val="L" onclick="selectRisk(this,'anonymity','prod')">No (L)</button>
+      </div>
+    </div>
+    <div class="question-row" style="border-bottom:none;">
+      <div>
+        <div class="question-text">Are the products/services to be provided to the client cash-intensive?</div>
+      </div>
+      <div class="radio-group" data-section="prod" data-q="cashIntensive">
+        <button class="risk-btn" data-val="H" onclick="selectRisk(this,'cashIntensive','prod')">Yes (H)</button>
+        <button class="risk-btn" data-val="L" onclick="selectRisk(this,'cashIntensive','prod')">No (L)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCORE SUMMARY -->
+  <div class="score-summary-grid">
+    <div class="score-card">
+      <div class="score-card-label">Customer risk</div>
+      <div class="score-card-value" id="sum-customer">—</div>
+      <div class="score-card-sub">/ 68 max</div>
+    </div>
+    <div class="score-card">
+      <div class="score-card-label">Geographical risk</div>
+      <div class="score-card-value" id="sum-geo">—</div>
+      <div class="score-card-sub">/ 7 max</div>
+    </div>
+    <div class="score-card">
+      <div class="score-card-label">Distribution risk</div>
+      <div class="score-card-value" id="sum-dist">—</div>
+      <div class="score-card-sub">/ 24 max</div>
+    </div>
+    <div class="score-card">
+      <div class="score-card-label">Product/service risk</div>
+      <div class="score-card-value" id="sum-prod">—</div>
+      <div class="score-card-sub">/ 14 max</div>
+    </div>
+  </div>
+
+  <div class="total-result-card">
+    <div>
+      <div class="total-result-label">Final AML/CFT Risk Assessment</div>
+      <div class="total-result-score" id="total-score">—</div>
+      <div style="font-size:12px; color:#8CA8C0; margin-top:4px;">Low 35–60 &nbsp;·&nbsp; Medium 61–87 &nbsp;·&nbsp; High 88–113 &nbsp;·&nbsp; Max 113</div>
+    </div>
+    <div class="risk-level-badge rl-pending" id="final-risk-badge">Pending</div>
+  </div>
+
+  <!-- EDD Card (high risk only) -->
+  <div class="edd-card" id="edd-card">
+    <div class="edd-title">⚠ Enhanced Due Diligence Required</div>
+    <div style="font-size:13px; color:var(--red-high); margin-bottom:12px;"><span id="edd-reason">Enhanced Due Diligence (EDD) is required for this client.</span> EDD must be conducted and an EDD report must be provided. This client must be approved by 2 Senior Management.</div>
+    <div style="font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.8px; color:#A32D2D; margin-bottom:8px;">EDD Outcome</div>
+    <div class="edd-options">
+      <button class="risk-btn" id="edd-pass" onclick="selectEDD('pass')" style="font-size:13px; padding:7px 24px;">Passed</button>
+      <button class="risk-btn" id="edd-fail" onclick="selectEDD('fail')" style="font-size:13px; padding:7px 24px;">Not passed</button>
+    </div>
+  </div>
+
+  <!-- APPROVAL SECTION -->
+  <div class="approval-card">
+    <div class="approval-header">Approval for account opening</div>
+    <div class="approval-body">
+      <div class="approval-options">
+        <button class="approve-btn" id="btn-approve" onclick="selectApproval('approve')">✓ Approve</button>
+        <button class="reject-btn" id="btn-reject" onclick="selectApproval('reject')">✕ Reject</button>
+      </div>
+      <label style="font-size:11px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; color:var(--text-muted); display:block; margin-bottom:6px;">Notes</label>
+      <textarea class="notes-area" id="approval-notes" placeholder="Enter any relevant notes regarding the account opening decision..."></textarea>
+      <div id="high-risk-reason-block" style="display:none;">
+        <label style="font-size:11px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; color:var(--red-high); display:block; margin-bottom:6px;">Reasons for approval (high-risk client — required)</label>
+        <textarea class="notes-area" id="highrisk-reasons" placeholder="For high-risk clients: state specific reasons for approval and risk mitigants..."></textarea>
+      </div>
+      <div class="sig-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+        <div class="sig-block">
+          <label>Prepared by</label>
+          <div class="sig-line"></div>
+          <input type="text" style="width:100%; border:none; border-bottom:0.5px solid var(--border); background:transparent; font-size:12px; padding:4px 0; outline:none;" placeholder="Name">
+          <input type="text" style="width:100%; border:none; border-bottom:0.5px solid var(--border); background:transparent; font-size:12px; padding:4px 0; margin-top:6px; outline:none;" placeholder="Date">
+        </div>
+        <div class="sig-block" id="first-approver-block">
+          <label>Approved by (Senior Management 1)</label>
+          <div class="sig-line"></div>
+          <input type="text" style="width:100%; border:none; border-bottom:0.5px solid var(--border); background:transparent; font-size:12px; padding:4px 0; outline:none;" placeholder="Name">
+          <input type="text" style="width:100%; border:none; border-bottom:0.5px solid var(--border); background:transparent; font-size:12px; padding:4px 0; margin-top:6px; outline:none;" placeholder="Date">
+        </div>
+        <div class="sig-block" id="second-approver-block">
+          <label>Approved by (Senior Management 2)</label>
+          <div class="sig-line"></div>
+          <input type="text" style="width:100%; border:none; border-bottom:0.5px solid var(--border); background:transparent; font-size:12px; padding:4px 0; outline:none;" placeholder="Name">
+          <input type="text" style="width:100%; border:none; border-bottom:0.5px solid var(--border); background:transparent; font-size:12px; padding:4px 0; margin-top:6px; outline:none;" placeholder="Date">
+        </div>
+      </div>
+      <div class="high-warning" id="dual-approval-warning">
+        ⚠ This client is High Risk and/or requires Enhanced Due Diligence (EDD). Approval by 2 Senior Management (Senior Management 1 and Senior Management 2 above) is required before account opening.
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEW FREQUENCY -->
+  <div class="review-card">
+    <div class="review-header">Review frequency</div>
+    <table class="review-table">
+      <thead>
+        <tr>
+          <th>Risk ranking</th>
+          <th>Review frequency</th>
+          <th>Due diligence level</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="review-row-L">
+          <td><span class="legend-pill" style="background:var(--green-bg); color:var(--green-mid);">Low</span></td>
+          <td class="review-freq">Every 2 years</td>
+          <td>Standard Due Diligence</td>
+        </tr>
+        <tr id="review-row-M">
+          <td><span class="legend-pill" style="background:var(--amber-bg); color:var(--amber-mid);">Medium</span></td>
+          <td class="review-freq">Every 2 years</td>
+          <td>Standard Due Diligence</td>
+        </tr>
+        <tr id="review-row-H">
+          <td><span class="legend-pill" style="background:var(--red-bg); color:var(--red-high);">High</span></td>
+          <td class="review-freq">Annual (minimum) — may be more frequent</td>
+          <td>Enhanced Due Diligence</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="periodic-note">
+      Periodic reviews may also be triggered at any time during the relationship should there be any material changes to how the account is operated, or if any unusual activity or adverse information is identified.
+    </div>
+  </div>
+
+  <!-- COUNTRY RISK LIST -->
+  <div class="section-card">
+    <div class="section-header">
+      <h2>Country risk classification</h2>
+    </div>
+    <div style="padding:16px 20px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;">
+      <div>
+        <div style="font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--green-mid); margin-bottom:8px; padding:5px 0; border-bottom:2px solid var(--green-mid);">Low risk</div>
+        <div style="font-size:12px; line-height:1.8; color:var(--text);">Andorra, Australia, Czech Republic, Denmark, Estonia, Finland, France, Greece, <strong>Hong Kong</strong>, Iceland, Ireland, Israel, Latvia, Lithuania, Luxembourg, New Zealand, Norway, San Marino, Slovenia, Spain, Sweden, Switzerland, Taiwan, United Kingdom, United States</div>
+      </div>
+      <div>
+        <div style="font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--amber-mid); margin-bottom:8px; padding:5px 0; border-bottom:2px solid var(--amber-mid);">Medium risk</div>
+        <div style="font-size:12px; line-height:1.8; color:var(--text);">Albania, Antigua and Barbuda, Armenia, Aruba, Austria, Bahrain, Belgium, Botswana, Brunei Darussalam, Canada, Chile, Colombia, Costa Rica, Croatia, Cyprus, Dominica, Fiji, Georgia, Germany, Hungary, Italy, Japan, Jordan, Kazakhstan, Korea (South), Liechtenstein, Macedonia, Malta, Mauritius, Moldova, Morocco, Netherlands, Peru, Poland, Portugal, Romania, Samoa, Serbia, Singapore, Slovakia, Trinidad and Tobago, Tunisia, Uruguay</div>
+      </div>
+      <div>
+        <div style="font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--red-high); margin-bottom:8px; padding:5px 0; border-bottom:2px solid var(--red-high);">High risk</div>
+        <div style="font-size:12px; line-height:1.8; color:var(--text);">Algeria, Angola, Bahamas, Bangladesh, Barbados, Belarus, Benin, Bhutan, Bulgaria, Burkina Faso, Cambodia, Cameroon, Cape Verde, Chad, <strong>China</strong>, Côte d'Ivoire, Cuba, Dominican Republic, Ecuador, Egypt, Eswatini, Ethiopia, Gabon, Gambia, Ghana, Grenada, Guatemala, Guinea-Bissau, Haiti, Honduras, Indonesia, Jamaica, Kenya, Kyrgyzstan, Laos, Liberia, Macao SAR, Madagascar, Malawi, Malaysia, Mali, Mauritania, Mexico, Mongolia, Mozambique, Myanmar, Namibia, Nicaragua, Niger, Nigeria, Pakistan, Palau, Panama, Paraguay, Philippines, Qatar, Republic of Congo, Saint Kitts and Nevis, Saint Lucia, Saudi Arabia, Senegal, Seychelles, Sierra Leone, Solomon Islands, South Africa, Sri Lanka, Suriname, Tajikistan, Tanzania, Thailand, DR Congo, Togo, Tonga, Türkiye, Turkmenistan, Uganda, Ukraine, United Arab Emirates, Uzbekistan, Vanuatu, Venezuela, Vietnam, Zambia, Zimbabwe</div>
+      </div>
+    </div>
+    <div class="country-lookup-row">
+      For the most current FATF country classifications and jurisdiction updates, refer to: <a href="https://www.fatf-gafi.org/en/home.html" target="_blank" onclick="openLink('https://www.fatf-gafi.org/en/home.html'); return false;">www.fatf-gafi.org</a>
+    </div>
+  </div>
+
+  <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+
+</div>
+
+<div class="page-footer">
+  <div class="footnote">This document is strictly private and confidential and is the property of Wind Rose Holding Limited. It is intended solely for internal compliance use and must not be reproduced, distributed, or disclosed to any third party without prior written consent.</div>
+</div>
+
+<script>
+const SCORES = { L: 2, M: 5, H: 7, NA: 0 };
+
+const state = {
+  customer: {},
+  dist: {},
+  prod: {},
+  geo: { nat: null, res: null, biz: null }
+};
+
+const LOW_COUNTRIES = ['andorra','australia','czech republic','denmark','estonia','finland','france','greece','hong kong','iceland','ireland','israel','latvia','lithuania','luxembourg','new zealand','norway','san marino','slovenia','spain','sweden','switzerland','taiwan','united kingdom','uk','great britain','england','scotland','wales','united states','usa','us'];
+const MED_COUNTRIES = ['albania','antigua and barbuda','armenia','aruba','austria','bahrain','belgium','botswana','brunei darussalam','brunei','canada','chile','colombia','costa rica','croatia','cyprus','dominica','fiji','georgia','germany','hungary','italy','japan','jordan','kazakhstan','korea south','south korea','liechtenstein','macedonia','malta','mauritius','moldova','morocco','netherlands','peru','poland','portugal','romania','samoa','serbia','singapore','slovakia','trinidad and tobago','trinidad','tobago','tunisia','uruguay'];
+
+function classifyCountry(name) {
+  if (!name || !name.trim()) return null;
+  const n = name.trim().toLowerCase().replace(/[^a-z\s]/g,'');
+  if (LOW_COUNTRIES.includes(n)) return 'L';
+  if (MED_COUNTRIES.includes(n)) return 'M';
+  return 'H';
+}
+
+function selectRisk(btn, questionKey, section) {
+  const val = btn.getAttribute('data-val');
+  const group = btn.closest('.radio-group');
+  group.querySelectorAll('.risk-btn').forEach(b => {
+    b.className = 'risk-btn';
+  });
+  btn.classList.add('selected-' + val);
+  state[section][questionKey] = val;
+  recalcAll();
+}
+
+function sectionScore(sectionData) {
+  return Object.values(sectionData).reduce((s, v) => s + (SCORES[v] || 0), 0);
+}
+
+function updateGeo() {
+  const natVal = document.getElementById('geo-nationality').value;
+  const resVal = document.getElementById('geo-residence').value;
+  const bizVal = document.getElementById('geo-business').value;
+
+  const nat = classifyCountry(natVal);
+  const res = classifyCountry(resVal);
+  const biz = bizVal.trim() ? classifyCountry(bizVal) : null;
+
+  state.geo.nat = nat;
+  state.geo.res = res;
+  state.geo.biz = biz;
+
+  setBadge('geo-nat-badge', nat);
+  setBadge('geo-res-badge', res);
+  setBadge('geo-biz-badge', biz);
+
+  const combined = computeGeoRisk(nat, res, biz, natVal, resVal, bizVal);
+  state.geo.combined = combined;
+
+  const badge = document.getElementById('geo-combined-badge');
+  const text = document.getElementById('geo-combined-text');
+
+  if (!combined) {
+    badge.className = 'geo-risk-indicator geo-risk-none';
+    badge.textContent = '—';
+    text.textContent = 'Enter nationality and country of residence';
+  } else {
+    const labels = { L: 'Low', M: 'Medium', H: 'High' };
+    badge.className = 'geo-risk-indicator geo-risk-' + combined;
+    badge.textContent = labels[combined];
+    const allThreeDifferentCountries = biz && new Set([natVal, resVal, bizVal].map(v => v.trim().toLowerCase())).size === 3;
+    const explanations = {
+      H: allThreeDifferentCountries ? 'All three inputs are different countries → High regardless of individual ratings' :
+         'Riskiest of the differing inputs is High',
+      M: 'Riskiest of the differing inputs is Medium',
+      L: 'All inputs in the same low-risk country'
+    };
+    text.textContent = explanations[combined] || '';
+  }
+
+  recalcAll();
+}
+
+function computeGeoRisk(nat, res, biz, natStr, resStr, bizStr) {
+  if (!nat || !res) return null;
+  const order = { H: 3, M: 2, L: 1 };
+
+  // Salary-paid clients: "Location of business" left blank -> two-input assessment
+  if (!biz) {
+    if (nat === res) return nat;
+    return order[nat] > order[res] ? nat : res;
+  }
+
+  // Three-input assessment (nationality, residence, location of business)
+  const n = (natStr || '').trim().toLowerCase();
+  const r = (resStr || '').trim().toLowerCase();
+  const b = (bizStr || '').trim().toLowerCase();
+
+  const allSameCountry = n === r && r === b;
+  if (allSameCountry) {
+    // Same country for all three (e.g. all in a low-risk country) -> that country's rating applies
+    return nat;
+  }
+
+  const distinctCountries = new Set([n, r, b]).size;
+  if (distinctCountries === 3) {
+    // All three inputs are different countries -> High regardless of individual ratings
+    return 'H';
+  }
+
+  // Exactly two distinct countries among the three (any two inputs differ) -> riskier level applies
+  return [nat, res, biz].reduce((worst, v) => (order[v] > order[worst] ? v : worst));
+}
+
+function setBadge(id, val) {
+  const el = document.getElementById(id);
+  if (!val) {
+    el.className = 'geo-risk-indicator geo-risk-none';
+    el.textContent = '—';
+  } else {
+    const labels = { L: 'Low', M: 'Medium', H: 'High' };
+    el.className = 'geo-risk-indicator geo-risk-' + val;
+    el.textContent = labels[val];
+  }
+}
+
+function recalcAll() {
+  const custScore = sectionScore(state.customer);
+  const distScore = sectionScore(state.dist);
+  const prodScore = sectionScore(state.prod);
+
+  const geoMap = { L: 2, M: 5, H: 7 };
+  const geoScore = state.geo.combined ? (geoMap[state.geo.combined] || 0) : 0;
+
+  const total = custScore + geoScore + distScore + prodScore;
+
+  document.getElementById('sum-customer').textContent = Object.keys(state.customer).length ? custScore : '—';
+  document.getElementById('sum-geo').textContent = state.geo.combined ? geoScore : '—';
+  document.getElementById('sum-dist').textContent = Object.keys(state.dist).length ? distScore : '—';
+  document.getElementById('sum-prod').textContent = Object.keys(state.prod).length ? prodScore : '—';
+
+  const hasAll = Object.keys(state.customer).length >= 9 && state.geo.combined && Object.keys(state.dist).length >= 4 && Object.keys(state.prod).length >= 2;
+
+  document.getElementById('badge-customer').textContent = Object.keys(state.customer).length ? 'Score: ' + custScore : 'Score: —';
+  document.getElementById('badge-geo').textContent = state.geo.combined ? 'Score: ' + geoScore : 'Score: —';
+  document.getElementById('badge-dist').textContent = Object.keys(state.dist).length ? 'Score: ' + distScore : 'Score: —';
+  document.getElementById('badge-prod').textContent = Object.keys(state.prod).length ? 'Score: ' + prodScore : 'Score: —';
+
+  let riskLevel = null;
+  if (Object.keys(state.customer).length && state.geo.combined && Object.keys(state.dist).length && Object.keys(state.prod).length) {
+    document.getElementById('total-score').textContent = total;
+    // Score bands derived from section min/max guide:
+    // Customer 18-68, Geo 2-7, Distribution 11-24, Product 4-14 => Total min 35, max 113
+    // Range (35-113) split into three even bands to correct the previously oversized Medium band
+    if (total <= 60) riskLevel = 'L';
+    else if (total <= 87) riskLevel = 'M';
+    else riskLevel = 'H';
+  } else {
+    document.getElementById('total-score').textContent = '—';
+  }
+
+  const badge = document.getElementById('final-risk-badge');
+  const labels = { L: 'Low Risk', M: 'Medium Risk', H: 'High Risk' };
+  const classes = { L: 'rl-low', M: 'rl-medium', H: 'rl-high' };
+  if (riskLevel) {
+    badge.className = 'risk-level-badge ' + classes[riskLevel];
+    badge.textContent = labels[riskLevel];
+  } else {
+    badge.className = 'risk-level-badge rl-pending';
+    badge.textContent = 'Pending';
+  }
+
+  // EDD is required if: PEP identified (Domestic or Foreign), OR any confirmed hit
+  // (sanctions or negative news), OR the total score falls in High risk.
+  const pepIdentified = state.customer.pep === 'M' || state.customer.pep === 'H';
+  const confirmedHit = state.customer.sanctionScreen === 'H' || state.customer.negNewsScreen === 'H';
+  const eddRequired = pepIdentified || confirmedHit || riskLevel === 'H';
+
+  document.getElementById('edd-card').classList.toggle('visible', eddRequired);
+  document.getElementById('edd-reason').textContent = riskLevel === 'H'
+    ? 'This client has been assessed as HIGH RISK.'
+    : (pepIdentified && confirmedHit
+        ? 'This client is a PEP and has a confirmed screening hit.'
+        : (pepIdentified
+            ? 'This client has been identified as a Politically Exposed Person (PEP).'
+            : 'This client has a confirmed screening hit (sanctions or negative news).'));
+  document.getElementById('high-risk-reason-block').style.display = riskLevel === 'H' ? 'block' : 'none';
+
+  // Any High Risk client, or any client requiring EDD, must be approved by 2 Senior Management.
+  document.getElementById('dual-approval-warning').classList.toggle('visible', eddRequired);
+  document.getElementById('first-approver-block').classList.toggle('required', eddRequired);
+  document.getElementById('second-approver-block').classList.toggle('required', eddRequired);
+
+  ['L','M','H'].forEach(l => {
+    const row = document.getElementById('review-row-' + l);
+    row.className = '';
+    if (riskLevel === l) {
+      row.className = l === 'H' ? 'review-active-H' : (l === 'M' ? 'review-active-M' : 'review-active');
+    }
+  });
+}
+
+function selectEDD(val) {
+  document.getElementById('edd-pass').className = 'risk-btn' + (val === 'pass' ? ' selected-L' : '');
+  document.getElementById('edd-fail').className = 'risk-btn' + (val === 'fail' ? ' selected-H' : '');
+}
+
+function selectApproval(val) {
+  document.getElementById('btn-approve').className = 'approve-btn' + (val === 'approve' ? ' selected' : '');
+  document.getElementById('btn-reject').className = 'reject-btn' + (val === 'reject' ? ' selected' : '');
+}
+
+function openLink(url) {
+  window.open(url, '_blank');
+}
+</script>
+</body>
+</html>
