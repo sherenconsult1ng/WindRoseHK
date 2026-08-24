@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AML/CFT Tools 反洗钱工具</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#12203A;
+  --navy:#1E3A5F;
+  --navy-deep:#0B1A2E;
+  --paper:#F5F6F3;
+  --card:#FFFFFF;
+  --line:#D9DEE4;
+  --line-soft:#E9ECEF;
+  --gold:#A9782F;
+  --gold-soft:#EFE3CB;
+  --slate:#5B6B7F;
+  --serif:'Noto Serif SC','Songti SC','Times New Roman',serif;
+  --sans:'Noto Sans SC','PingFang SC','Microsoft YaHei',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:var(--sans);
+  background:var(--paper);
+  color:var(--ink);
+  background-image:linear-gradient(var(--line-soft) 1px, transparent 1px);
+  background-size:100% 32px;
+  min-height:100vh;
+}
+a{color:inherit; text-decoration:none;}
+
+.topbar{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 28px;
+  background:#1434A4;
+  color:#fff;
+  border-bottom:3px solid var(--gold);
+}
+.brand-text .en{font-family:var(--serif); font-size:17px; font-weight:700; letter-spacing:.3px;}
+.brand-text .zh{font-size:11px; color:#C9D3DE; letter-spacing:2px;}
+
+main{max-width:1080px; margin:0 auto; padding:36px 22px 90px;}
+
+.hero{text-align:center; padding:64px 20px 40px;}
+.hero h1{font-family:var(--serif); font-size:34px; margin:0 0 6px; letter-spacing:.2px;}
+.hero h1 .zh{display:block; font-size:20px; color:var(--slate); font-weight:500; margin-top:6px;}
+.hero p.sub{color:var(--slate); font-size:14.5px; max-width:560px; margin:14px auto 0; line-height:1.7;}
+
+.choice-grid{
+  display:grid; grid-template-columns:1fr; gap:22px; max-width:520px; margin:44px auto 0; padding:0 20px;
+}
+.choice-card{
+  background:var(--card); border:1px solid var(--line); padding:34px 28px; text-align:left;
+  transition:all .18s ease; position:relative; overflow:hidden; display:block;
+}
+.choice-card::before{
+  content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--gold);
+  transform:scaleY(0); transform-origin:bottom; transition:transform .2s ease;
+}
+.choice-card:hover{box-shadow:0 10px 26px rgba(18,32,58,.10); transform:translateY(-2px); border-color:var(--navy);}
+.choice-card:hover::before{transform:scaleY(1);}
+.choice-card .tag{font-size:11px; letter-spacing:2px; color:var(--gold); font-weight:700; text-transform:uppercase;}
+.choice-card h2{font-family:var(--serif); font-size:22px; margin:10px 0 4px;}
+.choice-card h2 .zh{display:block; font-size:15px; color:var(--slate); font-weight:500;}
+.choice-card p{font-size:13.5px; color:var(--slate); line-height:1.6; margin:10px 0 0;}
+.choice-card .go{margin-top:18px; font-size:13px; font-weight:700; color:var(--navy); display:flex; align-items:center; gap:6px;}
+.choice-card:hover .go{color:var(--gold);}
+
+footer{text-align:center; font-size:12px; color:var(--slate); padding:30px 20px; border-top:1px solid var(--line); margin-top:40px;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand-text">
+    <div class="en">AML/CFT Tools</div>
+    <div class="zh">反洗钱及打击资助恐怖主义工具</div>
+  </div>
+</div>
+
+<main>
+  <div class="hero">
+    <h1>AML/CFT Toolkit<span class="zh">反洗钱工具箱</span></h1>
+    <p class="sub">Select a tool below to complete online. This form runs entirely in your browser — no data is uploaded or stored anywhere.</p>
+    <p class="sub">请选择以下工具在线填写。表格在您的浏览器內运行，不会上传或存储任何资料。</p>
+  </div>
+
+  <div class="choice-grid">
+    <a class="choice-card" href="aml_risk_assessment.html">
+      <div class="tag">AML/CFT · 反洗钱</div>
+      <h2>Client Risk Assessment<span class="zh">客户风险评估</span></h2>
+      <p>Scores a client's AML/CFT risk level based on nationality, residency, business jurisdiction and other factors, referencing FATF-aligned country risk ratings.</p>
+      <div class="go">Open tool →</div>
+    </a>
+  </div>
+
+  <footer>
+    This toolkit is provided for client information purposes. Not legal advice.<br>
+    本工具箱仅供客户参考之用，不构成法律意见。
+  </footer>
+</main>
+
+</body>
+</html>
