@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<!-- saved from url=(0099)file:///Users/Billy/Desktop/AI/Output/Work/2.%20Risk%20profile/2.%20Risk_Profile_Questionnaire.html -->
+<html lang="zh-HK"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Risk Profile Questionnaire 風險取向問卷</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#12203A;
+  --navy:#1E3A5F;
+  --navy-deep:#0B1A2E;
+  --paper:#F5F6F3;
+  --card:#FFFFFF;
+  --line:#D9DEE4;
+  --line-soft:#E9ECEF;
+  --gold:#A9782F;
+  --gold-soft:#EFE3CB;
+  --red:#B3261E;
+  --green:#1F7A5C;
+  --slate:#5B6B7F;
+  --slate-soft:#8592A3;
+  --radius:2px;
+  --serif:'Noto Serif SC','Songti SC','Times New Roman',serif;
+  --sans:'Noto Sans SC','PingFang SC','Microsoft YaHei',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:var(--sans);
+  background:var(--paper);
+  color:var(--ink);
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px);
+  background-size: 100% 32px;
+  background-attachment:local;
+  min-height:100vh;
+  font-size:14px; line-height:1.6;
+}
+.hidden{display:none !important;}
+.no-print{}
+a{color:inherit;}
+
+/* ---------- Topbar ---------- */
+.topbar{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 28px;
+  background:#1434A4;
+  color:#fff;
+  border-bottom:3px solid var(--gold);
+}
+.brand{display:flex; align-items:center; gap:12px;}
+.brand-text .en{font-family:var(--serif); font-size:17px; font-weight:700; letter-spacing:.3px;}
+.brand-text .zh{font-size:11px; color:#C9D3DE; letter-spacing:2px;}
+.toolbar{display:flex; gap:8px; flex-wrap:wrap;}
+.btn{
+  font-family:var(--sans); font-size:13px; font-weight:600;
+  border:1px solid var(--line); background:#fff; color:var(--ink);
+  padding:9px 14px; border-radius:var(--radius); cursor:pointer;
+  transition:all .15s ease; letter-spacing:.2px;
+}
+.btn:hover{border-color:var(--navy); background:#F2F4F6;}
+.btn-primary{background:var(--navy); color:#fff; border-color:var(--navy);}
+.btn-primary:hover{background:var(--gold); border-color:var(--gold); color:#1a1305;}
+.btn-gold{background:var(--gold); border-color:var(--gold); color:#fff;}
+.btn-gold:hover{background:#8f6427;}
+.btn-ghost{background:transparent; color:#fff; border-color:rgba(255,255,255,.35);}
+.btn-ghost:hover{background:rgba(255,255,255,.1); border-color:#fff;}
+.btn-block{display:block; width:100%; text-align:center; margin-top:18px;}
+.btn-sm{padding:6px 10px; font-size:12px;}
+
+/* ---------- Layout ---------- */
+main{max-width:1080px; margin:0 auto; padding:36px 22px 90px;}
+.card{background:var(--card); border:1px solid var(--line); box-shadow:0 1px 3px rgba(18,32,58,.06);}
+
+/* ---------- Document header ---------- */
+.doc-head{
+  padding:26px 30px; border-bottom:1px solid var(--line);
+  display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap;
+}
+.doc-head h1{font-family:var(--serif); font-size:24px; margin:0;}
+.doc-head h1 .zh{display:block; font-size:15px; color:var(--slate); font-weight:500; margin-top:3px;}
+.doc-meta{font-size:12px; color:var(--slate-soft); text-align:right; line-height:1.6;}
+
+/* ---------- Sections ---------- */
+.section{padding:26px 30px; border-bottom:1px solid var(--line);}
+.section:last-child{border-bottom:none;}
+.section-head{display:flex; align-items:baseline; gap:10px; margin-bottom:16px; flex-wrap:wrap;}
+.section-badge{
+  font-family:var(--serif); font-weight:700; font-size:12px; color:#fff;
+  background:var(--navy); padding:3px 9px; letter-spacing:1px;
+}
+.section-head h3{font-family:var(--serif); font-size:17px; margin:0; font-weight:700;}
+.section-head h3 .zh{color:var(--slate); font-weight:500; font-size:14px; margin-left:6px;}
+.info-box{
+  background:#F7F8F5; border:1px solid var(--line-soft); padding:14px 16px; font-size:12.5px;
+  color:var(--slate); line-height:1.65; margin-bottom:16px;
+}
+.info-box .zh{display:block; margin-top:6px; color:var(--slate-soft);}
+
+.grid{display:grid; grid-template-columns:repeat(12,1fr); gap:16px 18px;}
+@media(max-width:640px){.grid{grid-template-columns:1fr;}}
+.field{grid-column:span 4; display:flex; flex-direction:column; gap:6px; min-width:0;}
+.span-3{grid-column:span 3;} .span-4{grid-column:span 4;} .span-6{grid-column:span 6;}
+.span-8{grid-column:span 8;} .span-12{grid-column:span 12;}
+@media(max-width:640px){.field{grid-column:span 1 !important;}}
+
+.field label{font-size:12.5px; font-weight:600; color:var(--ink); line-height:1.4;}
+.field label .zh{font-weight:500; color:var(--slate); margin-left:3px;}
+
+input[type=text], input[type=number], input[type=date], input[type=email], input[type=tel]{
+  font-family:var(--sans); font-size:13.5px; color:var(--ink);
+  padding:9px 10px; border:1px solid var(--line); border-radius:var(--radius);
+  background:#fff; width:100%;
+}
+input:focus{outline:none; border-color:var(--navy); box-shadow:0 0 0 3px rgba(30,58,95,.12);}
+
+/* ---------- Experience table ---------- */
+.exp-wrap{overflow-x:auto; margin-bottom:6px;}
+.exp-table{width:100%; border-collapse:collapse; font-size:12.5px;}
+.exp-table th{text-align:center; padding:8px 6px; font-weight:700; font-size:10.5px; color:var(--slate); border-bottom:1px solid var(--line); background:#F7F8F5; white-space:nowrap; letter-spacing:.03em; text-transform:uppercase;}
+.exp-table th:first-child{text-align:left; min-width:220px;}
+.exp-table td{padding:8px 6px; border-bottom:1px solid var(--line-soft); text-align:center; vertical-align:middle;}
+.exp-table td:first-child{text-align:left; color:var(--ink); font-size:12.5px; line-height:1.4;}
+.exp-table td .sub{display:block; color:var(--slate-soft); font-size:10.5px; margin-top:1px; font-style:italic;}
+.exp-table tr:hover td{background:#FAFAF8;}
+.exp-table input[type=radio]{accent-color:var(--navy); width:14px; height:14px; cursor:pointer;}
+
+/* ---------- Progress ---------- */
+.prog-row{display:flex; align-items:center; gap:7px; margin-bottom:18px; flex-wrap:wrap;}
+.pdot{width:9px; height:9px; border-radius:50%; background:var(--line); flex-shrink:0;}
+.pdot.done{background:var(--green);}
+.ptext{font-size:12px; color:var(--slate); margin-left:4px;}
+
+/* ---------- Question blocks ---------- */
+.q-block{margin-bottom:14px; padding:16px 18px; border:1px solid var(--line-soft); background:#fff; transition:border-color .15s;}
+.q-block.answered{border-color:var(--green); background:#FAFDFB;}
+.q-num{font-size:10.5px; color:var(--slate-soft); margin-bottom:6px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;}
+.q-en{font-family:var(--serif); font-size:14.5px; font-weight:700; color:var(--ink); margin-bottom:3px; line-height:1.5;}
+.q-cn{font-size:12.5px; color:var(--slate); margin-bottom:12px; line-height:1.5;}
+.opt-list{display:flex; flex-direction:column; gap:6px;}
+.opt-item{display:flex; align-items:flex-start; gap:10px; padding:9px 12px; border:1px solid var(--line); border-radius:var(--radius); cursor:pointer; transition:all .1s;}
+.opt-item:hover{background:#F7F8F5; border-color:var(--slate-soft);}
+.opt-item.sel{border-color:var(--navy); background:#EEF2F7;}
+.opt-item input[type=radio]{accent-color:var(--navy); margin-top:3px; flex-shrink:0;}
+.opt-label{font-size:13px; color:var(--ink); line-height:1.4;}
+.opt-label .cn{color:var(--slate); font-size:11.5px; display:block; margin-top:1px;}
+
+/* ---------- Validation ---------- */
+.validate-msg{font-size:12.5px; font-weight:600;}
+.err{font-size:12.5px; color:var(--red); margin-top:12px; padding:9px 14px; background:#FBEDEC; border:1px solid #E7C6C3; border-radius:var(--radius); display:none;}
+
+/* ---------- Result card ---------- */
+.result-card{display:none;}
+.res-meta{display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:1px solid var(--line); margin-bottom:0;}
+.mi{text-align:center; padding:14px 10px; border-right:1px solid var(--line); border-bottom:1px solid var(--line);}
+.mi:last-child{border-right:none;}
+.mi-label{font-size:10px; color:var(--slate-soft); margin-bottom:4px; text-transform:uppercase; letter-spacing:.05em; font-weight:700;}
+.mi-val{font-size:14px; font-weight:700; color:var(--ink);}
+@media(max-width:640px){.res-meta{grid-template-columns:1fr 1fr;} .mi{border-bottom:1px solid var(--line);}}
+
+.bar-wrap{padding:16px 18px; border:1px solid var(--line); border-top:none;}
+.bar-top{display:flex; justify-content:space-between; font-size:11.5px; color:var(--slate); margin-bottom:8px; font-weight:600;}
+.bar-bg{height:8px; border-radius:4px; background:var(--line-soft); overflow:hidden; position:relative;}
+.bar-fill{height:100%; border-radius:4px; background:var(--navy); transition:width .6s cubic-bezier(.4,0,.2,1);}
+.bar-ticks{display:flex; justify-content:space-between; font-size:10px; color:var(--slate-soft); margin-top:4px;}
+
+.prof-block{padding:18px; border:1px solid var(--line); border-top:none;}
+.pbadge{display:inline-block; font-size:11px; padding:5px 12px; border-radius:var(--radius); font-weight:700; margin-bottom:10px; letter-spacing:.03em;}
+.pname{font-family:var(--serif); font-size:16px; font-weight:700; color:var(--ink); margin-bottom:8px; line-height:1.4;}
+.pdesc{font-size:12.5px; color:var(--slate); line-height:1.7; white-space:pre-line;}
+
+/* ---------- Signatures (Part 4) ---------- */
+.sig-section{padding:18px; border:1px solid var(--line); border-top:none;}
+.sig-section-title{display:flex; align-items:baseline; gap:10px; margin-bottom:14px;}
+.sig-section-title h3{font-family:var(--serif); font-size:15px; margin:0; font-weight:700;}
+.sig-section-title h3 .zh{color:var(--slate); font-weight:500; font-size:13px; margin-left:6px;}
+.sig-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+@media(max-width:640px){.sig-grid{grid-template-columns:1fr;}}
+.sig-box{border:1px solid var(--line); background:#fff; padding:16px;}
+.sig-box-title{font-family:var(--serif); font-size:13px; font-weight:700; color:var(--ink); margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid var(--line-soft);}
+.sig-box-title .cn{font-size:11px; color:var(--slate); display:block; font-weight:500; margin-top:2px;}
+.sig-fields{display:flex; flex-direction:column; gap:10px;}
+.sig-field label{font-size:11.5px; color:var(--slate); display:block; margin-bottom:4px; font-weight:600;}
+.sig-field input{width:100%; padding:8px 10px; font-size:12.5px; border:1px solid var(--line); border-radius:var(--radius); background:#fff; color:var(--ink);}
+.sig-field input:focus{outline:none; border-color:var(--navy); box-shadow:0 0 0 3px rgba(30,58,95,.12);}
+.sig-line-wrap{margin-top:14px; padding-top:12px; border-top:1px solid var(--line-soft);}
+.sig-line-label{font-size:10px; color:var(--slate-soft); margin-bottom:6px; font-weight:700; text-transform:uppercase; letter-spacing:.03em;}
+.sig-line{height:52px; border-bottom:1px solid var(--slate-soft); position:relative;}
+.sig-line:after{content:"Sign here　請在此簽署"; position:absolute; bottom:6px; left:0; font-size:10px; color:var(--slate-soft); font-style:italic;}
+
+footer.foot{max-width:1080px; margin:0 auto; padding:0 22px 40px; font-size:11px; color:var(--slate-soft); text-align:center;}
+
+/* ---------- Print ---------- */
+@media print{
+  .topbar, .no-print{display:none !important;}
+  body{background:#fff;}
+  main{padding:0; max-width:100%;}
+  .card{box-shadow:none; border:none;}
+  .section{break-inside:avoid; padding:14px 4px;}
+  .q-block, .sig-box{break-inside:avoid;}
+  .result-card{display:block !important;}
+  input{border:1px solid #999;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <div class="brand-text">
+      <div class="en">xyz Asset Managment Limited xyz資產管理有限公司 (ADS123)</div>
+      <div class="en">Risk Profile Questionnaire</div><div class="zh">风险取向问卷</div>
+    </div>
+  </div>
+  <div class="toolbar no-print">
+    <button class="btn btn-primary btn-sm" onclick="window.print()">⬇ Print / Save PDF 打印</button>
+  </div>
+</div>
+
+<main>
+  <div class="card">
+    <div class="doc-head">
+      <h1>Risk Profile Questionnaire<span class="zh">风险取向问卷</span></h1>
+      <div class="doc-meta">Form ref: RPQ<br>表格编号：RPQ</div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><span class="section-badge">A</span><h3>Client Details<span class="zh">客户资料</span></h3></div>
+      <div class="grid">
+        <div class="field span-4"><label>Client Name<span class="zh">客户名称</span></label><input type="text" id="clientName" placeholder="Full name"></div>
+        <div class="field span-4"><label>Account No.<span class="zh">帐户号码</span></label><input type="text" id="accountNo" placeholder="Account number"></div>
+        <div class="field span-4"><label>Date<span class="zh">日期</span></label><input type="date" id="dateInput"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><span class="section-badge">1</span><h3>Investment Knowledge &amp; Experience<span class="zh">投资知识与经验</span></h3></div>
+      <div class="info-box">Please indicate your experience level for each product category by selecting one option per row.<span class="zh">请注明您对每类产品的经验年期，每行选择一项。</span></div>
+      <div class="exp-wrap">
+        <table class="exp-table">
+          <thead>
+            <tr>
+              <th style="text-align:left">Product 产品</th>
+              <th>&gt;10 yrs<br>多于10年</th>
+              <th>6–10 yrs<br>6–10年</th>
+              <th>1–5 yrs<br>1–5年</th>
+              <th>&lt;1 yr<br>少于1年</th>
+              <th>Knowledge only<br>有相关知识</th>
+              <th>No experience<br>全无经验</th>
+            </tr>
+          </thead>
+          <tbody id="expBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><span class="section-badge">2</span><h3>Risk Profile Questions<span class="zh">风险取向问卷</span></h3></div>
+      <div class="info-box">For joint accounts, the applicant responsible for giving instructions or making investment decisions should complete this section. All 8 questions must be answered; only one answer per question.<span class="zh">如为联名账户，代表该账户发出有关指示或作出投资决定的申请人应填写本部分。须回答全部8条问题，每题只可选择一个答案。</span></div>
+      <div class="prog-row" id="progRow"></div>
+      <div id="qWrap"></div>
+
+      <button class="btn btn-primary btn-block" onclick="calculate()">Calculate Risk Profile　计算风险取向</button>
+      <div class="err no-print" id="errMsg">⚠ Please answer all 8 questions before calculating.　请先回答全部8条问题。</div>
+    </div>
+
+    <div class="section result-card" id="resultCard">
+      <div class="section-head">
+        <span class="section-badge">3</span><h3>Risk Profile Result<span class="zh">风险取向结果</span></h3>
+        <button class="btn btn-sm no-print" style="margin-left:auto" onclick="window.print()">Print / Save PDF　打印</button>
+      </div>
+      <div class="res-meta">
+        <div class="mi"><div class="mi-label">Client 客户</div><div class="mi-val" id="rName">—</div></div>
+        <div class="mi"><div class="mi-label">Account 帐号</div><div class="mi-val" id="rAcct">—</div></div>
+        <div class="mi"><div class="mi-label">Age Group 年龄</div><div class="mi-val" id="rAge">—</div></div>
+        <div class="mi"><div class="mi-label">Date 日期</div><div class="mi-val" id="rDate">—</div></div>
+      </div>
+      <div class="bar-wrap">
+        <div class="bar-top"><span style="font-weight:600">Total Score 总分</span><span id="rScore" style="font-weight:700;color:var(--navy);font-size:15px">— / 120</span></div>
+        <div class="bar-bg"><div class="bar-fill" id="rBar" style="width: 0%;"></div></div>
+        <div class="bar-ticks"><span>12</span><span>39</span><span>66</span><span>93</span><span>120</span></div>
+      </div>
+      <div class="prof-block">
+        <div class="pbadge" id="rBadge">—</div>
+        <div class="pname" id="rPName">—</div>
+        <div class="pdesc" id="rPDesc">—</div>
+      </div>
+
+      <div class="sig-section">
+        <div class="sig-section-title"><span class="section-badge">4</span><h3>Declaration &amp; Signatures<span class="zh">声明及签署</span></h3></div>
+        <div class="info-box" style="margin-bottom:16px">Your risk profile is derived from the answers above. We recommend selecting your risk exposure in line with your calculated risk profile. We will not accept a risk exposure more than one notch above your risk profile.<span class="zh">您的风险概况来源于上述回答。我们建议您根据计算的风险概况选择风险敞口。我们不会接受比风险概况高出一个档次的风险敞口。</span></div>
+        <div class="sig-grid">
+          <div class="sig-box">
+            <div class="sig-box-title">Client 客户<span class="cn">To be completed by the account holder 由账户持有人填写</span></div>
+            <div class="sig-fields">
+              <div class="sig-field"><label>Full Name 客户全名</label><input type="text" id="sigClientName" placeholder="As per identity document"></div>
+              <div class="sig-field"><label>Identity Document No. 身份证号码<br><span style="font-size:10px;color:var(--slate-soft)">(HKID / Passport)</span></label><input type="text" id="sigClientID" placeholder="e.g. A123456(7)"></div>
+              <div class="sig-field"><label>Date 日期 (DD/MM/YYYY)</label><input type="text" id="sigClientDate" placeholder="DD/MM/YYYY"></div>
+            </div>
+            <div class="sig-line-wrap">
+              <div class="sig-line-label">Signature of Client 客户签署</div>
+              <div class="sig-line"></div>
+            </div>
+          </div>
+          <div class="sig-box">
+            <div class="sig-box-title">Relationship Manager 关系经理<span class="cn">For manager official use only 仅供管理人内部使用</span></div>
+            <div class="sig-fields">
+              <div class="sig-field"><label>Full Name 全名</label><input type="text" id="sigRMName" placeholder="Licensed representative name"></div>
+              <div class="sig-field"><label>SFC CE No. 持牌人中央编号</label><input type="text" id="sigCE" placeholder="e.g. ABC123"></div>
+              <div class="sig-field"><label>Date 日期 (DD/MM/YYYY)</label><input type="text" id="sigRMDate" placeholder="DD/MM/YYYY"></div>
+            </div>
+            <div class="sig-line-wrap">
+              <div class="sig-line-label">Signature of SFC Licensed Representative 证监会持牌人签署</div>
+              <div class="sig-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box" style="margin:16px 18px 0">
+        <strong>Important Notice 重要提示：</strong><br>
+        This questionnaire and the test results are for reference only. It does not constitute investment advice and should not be regarded as a solicitation or offer to buy or sell any investment products or services. This questionnaire is not a substitute for independent professional advice. The Company shall not give any guarantee for the accuracy and completeness of the content of the questionnaire and the results. You should regularly review your investment strategy. If necessary, you may complete the questionnaire again in the future in order to re-evaluate your risk appetite.
+        <span class="zh">本问卷及测试结果仅供参考，并不构成投资建议，亦不得视为建议游说买卖任何投资产品或服务。本问卷并不能取代独立的专业意见。本公司对本问卷内容及结果的准确性及完整性概不作出任何保证。阁下应定期检讨投资策略。如有需要，阁下可于日后再次填写本问卷以重新评估阁下的风险取向。</span>
+      </div>
+    </div>
+  </div>
+
+  <footer class="foot">xyz Asset Managment Limited xyz資產管理有限公司 · Risk Profile Questionnaire V1_2026</footer>
+</main>
+
+<script>
+const products=[
+  ["Foreign Exchange / Precious Metal Forwards and Swaps","外汇/贵金属远期及掉期"],
+  ["Investment Funds (Mutual Funds, Unit Trusts)","投资基金（共同基金/单位信托）"],
+  ["Exchange Traded Securities / Funds (Stocks, Bonds, REITs)","交易所买卖股份/基金（股票、债券、REITs）"],
+  ["Non-Traditional Asset Classes (Hedge Funds, Commodities, Private Markets)","非传统资产类别（对冲基金、商品、私募市场）"],
+  ["Dual / Triple Currencies Investments","双币/三币投资"],
+  ["Selling Vanilla Call Options","卖出普通认购期权"],
+  ["Selling Vanilla Call & Put Options – with margin trading","卖出普通认购及认沽期权（保证金交易）"],
+  ["Bull Equity Linked Note (ELN) / Discount Purchase Note","看涨式股票挂钩票据（ELN）"],
+  ["Knock-Out Equity Linked Note","触价失效股票挂钩票据"],
+  ["Range Accrual Equity Linked Note (VMRANs)","区间计息股票挂钩票据（VMRAN）"],
+  ["Fixed Coupon ELN / Reverse Convertible Note (RCN)","定息股票挂钩票据（RCN）"],
+  ["Debentures & Hybrid Capital Securities (Bonds, Perpetual Bonds, Preferred Shares)","债券/混合资本证券（包括永久债券及优先股）"],
+  ["PE / VC Fund, Direct Investment","私募/风投基金，直接投资"],
+  ["Virtual Asset and Virtual Asset Related Product","虚拟资产及虚拟资产相关产品"]
+];
+const expCols=[">10 yrs","6–10 yrs","1–5 yrs","<1 yr","Knowledge only","No experience"];
+const tb=document.getElementById("expBody");
+products.forEach((p,i)=>{
+  const tr=document.createElement("tr");
+  let c=`<td>${p[0]}<span class="sub">${p[1]}</span></td>`;
+  expCols.forEach((_,j)=>{c+=`<td><input type="radio" name="exp${i}" value="${j}" aria-label="${p[0]} – ${expCols[j]}"></td>`;});
+  tr.innerHTML=c;tb.appendChild(tr);
+});
+
+const questions=[
+  {en:"Which of the following age category do you belong to?",cn:"您属于以下哪个年龄组别？",
+   opts:[{en:"Between 18 to 24",cn:"18岁至24岁",s:3},{en:"Between 25 to 34",cn:"25岁至34岁",s:8},{en:"Between 35 to 49",cn:"35岁至49岁",s:15},{en:"Between 50 to 64",cn:"50岁至64岁",s:5},{en:"Below 18 or 65 and above",cn:"18岁以下或65岁或以上",s:1}]},
+  {en:"What is your highest academic qualification / education level?",cn:"您的最高学历/教育水平？",
+   opts:[{en:"Primary education or below",cn:"小学或以下",s:1},{en:"Secondary education",cn:"中学",s:3},{en:"Tertiary / associate degree / diploma",cn:"大专/副学士/文凭",s:8},{en:"Bachelor",cn:"大学",s:11},{en:"Master or above",cn:"硕士或以上",s:15}]},
+  {en:"What is your expected investment horizon?",cn:"您预期中的投资年期为多久？",
+   opts:[{en:"Less than 1 year",cn:"少于1年",s:1},{en:"1 to 3 year(s)",cn:"1年至3年",s:3},{en:"4 to 6 years",cn:"4年至6年",s:5},{en:"7 to 10 years",cn:"7年至10年",s:8},{en:"More than 10 years",cn:"10年以上",s:15}]},
+  {en:"Which of the following best describes your investment objective?",cn:"以下哪一项最符合您投资的回报要求？",
+   opts:[{en:"Preserve capital; accept little risk for return similar to inflation rate",cn:"保障财富，接受少量风险以获取至少紧贴通胀率的回报",s:1},{en:"Obtain regular income and relatively stable capital",cn:"希望投资提供入息，资本维持相对稳定",s:3},{en:"Expected return slightly above inflation; willing to accept expected risk",cn:"赚取略高于通胀率的回报以达成财务目标，可接受已预计的风险",s:5},{en:"Capital growth; willing to accept potential capital loss and moderate risk",cn:"追求资本增值，接受一定程度潜在损失及适度风险",s:11},{en:"Maximise return well above inflation; capital appreciation over preservation",cn:"赚取远高于通胀率的回报，长期高回报率比保本更为重要",s:15}]},
+  {en:"What level of fluctuation in the value of products will you be willing to commit?",cn:"您会愿意投资于波动程度多大的产品？",
+   opts:[{en:"Fluctuation between 1% – 4%",cn:"于1%至4%之间的波动",s:1},{en:"Fluctuation between 4% – 7%",cn:"于4%至7%之间的波动",s:5},{en:"Fluctuation between 7% – 13%",cn:"于7%至13%之间的波动",s:8},{en:"Fluctuation between 13% – 20%",cn:"于13%至20%之间的波动",s:11},{en:"Fluctuation more than 20%",cn:"20%以上之间的波动",s:15}]},
+  {en:"Among the four hypothetical portfolios below, which one best describes your investment preference?",cn:"以下四个不同的假设性投资组合，哪一个最能描述你的投资风格？",
+   opts:[{en:"1% – 3% average annual return",cn:"平均1%至3% 年度回报",s:1},{en:"3% – 5% average annual return",cn:"平均3%至5% 年度回报",s:5},{en:"5% – 7% average annual return",cn:"平均5%至7% 年度回报",s:8},{en:"7% – 9% average annual return",cn:"平均7%至9% 年度回报",s:11},{en:"Higher than 9% average annual return",cn:"高于9% 年度回报",s:15}]},
+  {en:"What is the percentage of after-tax income reserved for savings or investment?",cn:"您一般可以将税后收入的多少百分比留作储蓄或投资之用？",
+   opts:[{en:"5% or below",cn:"5%或以下",s:3},{en:"Over 5%, but less than 10%",cn:"超过5%，但不多于10%",s:5},{en:"Over 10%, but less than 20%",cn:"超过10%，但不多于20%",s:8},{en:"Over 20%, but less than 25%",cn:"超过20%，但不多于25%",s:11},{en:"Over 25%",cn:"超过25%",s:15}]},
+  {en:"What is the average percentage of total net worth allocated for investment (excluding real estate)?",cn:"您打算用作为投资用途的款项平均占您的总资产净值中的百分比（物业除外）？",
+   opts:[{en:"Less than 5%",cn:"少于5%",s:3},{en:"5% to less than 10%",cn:"5% 至少于10%",s:5},{en:"10% to less than 20%",cn:"10% 至少于20%",s:8},{en:"20% to less than 30%",cn:"20% 至少于30%",s:11},{en:"30% or above",cn:"30%或以上",s:15}]}
+];
+
+const answered=new Array(8).fill(false);
+const qWrap=document.getElementById("qWrap");
+const progRow=document.getElementById("progRow");
+
+function updateProg(){
+  const done=answered.filter(Boolean).length;
+  progRow.innerHTML='';
+  for(let i=0;i<8;i++){
+    const d=document.createElement("div");
+    d.className="pdot"+(answered[i]?" done":"");
+    progRow.appendChild(d);
+  }
+  const t=document.createElement("span");
+  t.className="ptext";
+  t.textContent=done===8?"✓ All 8 questions answered　所有问题已回答":`${done} / 8 answered　已回答`;
+  if(done===8)t.style.color="#1F7A5C";
+  progRow.appendChild(t);
+}
+
+questions.forEach((q,qi)=>{
+  const b=document.createElement("div");
+  b.className="q-block";b.id="qb"+qi;
+  b.innerHTML=`<div class="q-num">Question ${qi+1} of 8　第${qi+1}题（共8题）</div><div class="q-en">${q.en}</div><div class="q-cn">${q.cn}</div><div class="opt-list" id="ol${qi}"></div>`;
+  qWrap.appendChild(b);
+  const ol=document.getElementById("ol"+qi);
+  q.opts.forEach((o,oi)=>{
+    const item=document.createElement("label");
+    item.className="opt-item";item.id=`op${qi}_${oi}`;
+    item.innerHTML=`<input type="radio" name="q${qi}" value="${o.s}" onchange="selOpt(${qi},${oi})"><span class="opt-label">${o.en}<span class="cn">${o.cn}</span></span>`;
+    ol.appendChild(item);
+  });
+});
+updateProg();
+
+function selOpt(qi,oi){
+  document.querySelectorAll(`#ol${qi} .opt-item`).forEach(el=>el.classList.remove("sel"));
+  document.getElementById(`op${qi}_${oi}`).classList.add("sel");
+  answered[qi]=true;
+  document.getElementById("qb"+qi).classList.add("answered");
+  updateProg();
+}
+
+const profiles=[
+  {max:12,cls:1,badge:"Asset Preservation",name:"Risk Profile 1 — Asset Preservation　風險取向1：資產保值",
+   desc:"Objective is asset preservation. A minimal volatility of asset value is expected. Only prepared to face minimal volatility that may result in minimal to low losses.\n目標是資產保值，預期資產值呈最低波幅。只準備面對可能導致輕微虧損的最低波幅。",bc:"#E1F5EE",tc:"#0F6E56"},
+  {max:32,cls:2,badge:"Conservative",name:"Risk Profile 2 — Conservative　風險取向2：保守",
+   desc:"Objective is asset preservation. A low volatility of asset value is expected. Only prepared to face volatility that may result in low to moderate losses.\n目標是資產保值，預期資產值呈低波幅。只準備面對可能導致低至中度虧損的波幅。",bc:"#E6F1FB",tc:"#185FA5"},
+  {max:55,cls:3,badge:"Moderate",name:"Risk Profile 3 — Moderate　風險取向3：稳健",
+   desc:"Objective is slight asset appreciation. Prepared to face average volatility of asset value that may result in moderate losses.\n目標是資產略微增值。準備面對可能導致中等虧損的資產值中度波幅。",bc:"#FAEEDA",tc:"#854F0B"},
+  {max:82,cls:4,badge:"Aggressive",name:"Risk Profile 4 — Aggressive　風險取向4：进取",
+   desc:"Objective is substantial asset appreciation. Prepared to face above average volatility of asset value that may result in considerable losses.\n目標是長期的資產大幅增值。準備面對可能導致相當大虧損的資產值中高波幅。",bc:"#FAECE7",tc:"#993C1D"},
+  {max:999,cls:5,badge:"Leverage Aggressive",name:"Risk Profile 5 — Leverage Aggressive　風險取向5：槓桿式进取",
+   desc:"Objective is to maximize asset appreciation. Prepared to face high volatility of asset value that may result in significant losses. Prepared to use leverage.\n目標是長期的資產最大增值。準備面對可能導致重大虧損的資產值高波幅。準備利用槓桿效應。",bc:"#F5C4B3",tc:"#4A1B0C"}
+];
+
+function calculate(){
+  const err=document.getElementById("errMsg");
+  if(!answered.every(Boolean)){
+    err.style.display="block";
+    const first=answered.indexOf(false);
+    document.getElementById("qb"+first).scrollIntoView({behavior:"smooth",block:"center"});
+    return;
+  }
+  err.style.display="none";
+  let total=0;
+  for(let i=0;i<8;i++){total+=parseInt(document.querySelector(`input[name="q${i}"]:checked`).value);}
+  const nm=document.getElementById("clientName").value||"—";
+  const ac=document.getElementById("accountNo").value||"—";
+  const dv=document.getElementById("dateInput").value;
+  const ds=dv?new Date(dv).toLocaleDateString("en-GB"):"—";
+  const ageLabels=["18–24","25–34","35–49","50–64","<18 or 65+"];
+  const aIdx=questions[0].opts.findIndex(o=>o.s===parseInt(document.querySelector("input[name='q0']:checked").value));
+  const ag=ageLabels[aIdx]||"—";
+  const p=profiles.find(x=>total<=x.max);
+  const pct=Math.min(((total-12)/(120-12))*100,100);
+  document.getElementById("rName").textContent=nm;
+  document.getElementById("rAcct").textContent=ac;
+  document.getElementById("rAge").textContent=ag;
+  document.getElementById("rDate").textContent=ds;
+  document.getElementById("rScore").textContent=total+" / 120";
+  document.getElementById("rBar").style.width=pct.toFixed(1)+"%";
+  const badge=document.getElementById("rBadge");
+  badge.textContent="Class "+p.cls+" — "+p.badge;
+  badge.style.background=p.bc;badge.style.color=p.tc;
+  document.getElementById("rPName").textContent=p.name;
+  document.getElementById("rPDesc").textContent=p.desc;
+  const rc=document.getElementById("resultCard");
+  rc.style.display="block";
+  document.getElementById("sigClientName").value=nm;
+  if(dv){
+    const d=new Date(dv);
+    const fmt=`${String(d.getDate()).padStart(2,"0")}/${String(d.getMonth()+1).padStart(2,"0")}/${d.getFullYear()}`;
+    document.getElementById("sigClientDate").value=fmt;
+    document.getElementById("sigRMDate").value=fmt;
+  }
+  setTimeout(()=>rc.scrollIntoView({behavior:"smooth",block:"start"}),100);
+}
+
+document.getElementById("dateInput").valueAsDate=new Date();
+</script>
+
+
+</body></html>
