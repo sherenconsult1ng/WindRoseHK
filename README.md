@@ -10,6 +10,6 @@ Key-takeaway summaries of Hong Kong SFC/HKMA regulatory news, prepared by Wind R
 - hk-regulatory-compliance-newsletter-june-2026
   
 ---
-Contact: billy.leung@windroseholdco.com | (852) 9629 9165
+## Contact: billy.leung@windroseholdco.com | (852) 9629 9165
 
 This digest summarises publicly available SFC and HKMA announcements. Not legal advice.
