@@ -32,6 +32,6 @@ We provide independent, practical guidance to fund managers establishing new inv
 
   
 ---
-**Contact:** billy.leung@windroseholdco.com | (852) 9629 9165
+**Contact:** <billy.leung@windroseholdco.com> | (852) 9629 9165
 
 This digest summarises publicly available SFC and HKMA announcements. Not legal advice.
