@@ -1,13 +1,14 @@
 # Wind Rose Holding limited
 
 It is a Hong Kong-based company providing our clients with professional, tailored compliance consultancy service to we support our clients from initial licensing through to day-to-day operational compliance.
-### "No off the shelf package"  Advice built around you, not a template applied to you.
+
+**"No off the shelf package"**  Advice built around you, not a template applied to you.
 
 # Three cores of service
 ## Licensing
-Navigating Hong Kong's licensing regimes requires precision, foresight and close engagement with the relevant regulators. We guide clients through the full application lifecycle — from initial eligibility assessment and documentation preparation, to regulator liaison and post-approval set-up — so that applications are well-prepared, complete and positioned for a smooth approval process.
+Navigating Hong Kong's licensing regimes requires precision, foresight and close engagement with the relevant regulators. We guide clients through the full application lifecycle —- from initial eligibility assessment and documentation preparation, to regulator liaison and post-approval set-up so that applications are well-prepared, complete and positioned for a smooth approval process.
 
-SFC Licence Application — End-to-end support for corporations seeking to conduct one or more regulated activities under the Securities and Futures Ordinance. Our services cover business plan and internal control document preparation, responsible officer and licensed representative applications, fit-and-proper assessments, and coordination with the SFC throughout the review process.
+SFC Licence Application —- End-to-end support for corporations seeking to conduct one or more regulated activities under the Securities and Futures Ordinance. Our services cover business plan and internal control document preparation, responsible officer and licensed representative applications, fit-and-proper assessments, and coordination with the SFC throughout the review process.
 
 ## Ongoing Support
 We deliver tailored training programmes and advisory sessions for your teams to ensure institutional knowledge and capability. From compliance officers to senior management, we provide practical guidance grounded in real-world experience.
