@@ -30,8 +30,9 @@ We provide independent, practical guidance to fund managers establishing new inv
 
 [Newsletter June 2026](https://github.com/sherenconsult1ng/WindRoseHK/blob/main/hk-regulatory-compliance-newsletter-june-2026.pdf)
 
-  
----
+___
 **Contact:** <billy.leung@windroseholdco.com> | (852) 9629 9165
+
+
 
 This digest summarises publicly available SFC and HKMA announcements. Not legal advice.
