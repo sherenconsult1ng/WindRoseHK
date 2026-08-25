@@ -22,7 +22,8 @@ We provide independent, practical guidance to fund managers establishing new inv
 
 ### We provide Tools, Key-takeaway summaries of Hong Kong SFC regulatory news
 
-- Case Takeaway - CISIAM
+[CISIAM Case take away](../blob/master/CISIAM_Case_Compliance_Advisory_Bilingual.pdf)
+
 - hk-regulatory-compliance-newsletter-july-2026-简体中文
 - hk-regulatory-compliance-newsletter-july-2026
 - hk-regulatory-compliance-newsletter-june-2026
