@@ -22,11 +22,14 @@ We provide independent, practical guidance to fund managers establishing new inv
 
 ### We provide Tools, Key-takeaway summaries of Hong Kong SFC regulatory news
 
-[CISIAM Case take away](../blob/master/CISIAM_Case_Compliance_Advisory_Bilingual.pdf)
+[CISIAM Case take away](https://github.com/sherenconsult1ng/WindRoseHK/blob/main/CISIAM_Case_Compliance_Advisory_Bilingual.pdf)
 
-- hk-regulatory-compliance-newsletter-july-2026-简体中文
-- hk-regulatory-compliance-newsletter-july-2026
-- hk-regulatory-compliance-newsletter-june-2026
+[Newsletter July 简体中文](https://github.com/sherenconsult1ng/WindRoseHK/blob/main/hk-regulatory-compliance-newsletter-july-2026.pdf)
+
+[Newsletter July 2026](https://github.com/sherenconsult1ng/WindRoseHK/blob/main/hk-regulatory-compliance-newsletter-july-2026.pdf)
+
+[Newsletter June 2026](https://github.com/sherenconsult1ng/WindRoseHK/blob/main/hk-regulatory-compliance-newsletter-june-2026.pdf)
+
   
 ---
 Contact: billy.leung@windroseholdco.com | (852) 9629 9165
