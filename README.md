@@ -1,6 +1,6 @@
 # Wind Rose Holding limited
 
-It is a Hong Kong-based company providing our clients with professional, tailored compliance consultancy service to we support our clients from initial licensing through to day-to-day operational compliance.
+It is a Hong Kong-based company providing our clients with professional, tailored compliance consultancy service to support our clients from initial licensing through to day-to-day operational compliance.
 
 **"No off the shelf package"**  Advice built around you, not a template applied to you.
 
