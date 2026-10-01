@@ -24,6 +24,9 @@ We provide independent, practical guidance to fund managers establishing new inv
 
 
 ## Key takeaways & digests
+[Newsletter September 2026 简体中文](https://github.com/sherenconsult1ng/WindRoseHK/blob/main/Newsletter%20-%20September%202026%20(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87).pdf)
+
+[Newsletter September 2026](https://github.com/sherenconsult1ng/WindRoseHK/blob/main/Newsletter%20-%20September%202026.pdf)
 
 [Newsletter August 2026 简体中文](https://github.com/sherenconsult1ng/WindRoseHK/blob/main/Newsletter%20-%20August%202026%20(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87).pdf)
 
